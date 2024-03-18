@@ -40,7 +40,8 @@ unit_tests: clean libmy.a
 	gcc -o unit_tests $(CFLAGS) $(LDFLAGS) \
 	--coverage -lcriterion
 
-tests_run: unit_tests
+tests_run: unit_tests 
 	./unit_tests
+	make clean
 
 .PHONY: tests_run fclean clean
