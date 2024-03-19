@@ -42,6 +42,19 @@ jobs:
         run: make tests_run 
         timeout-minutes: 2
 
+  check_valgrind:
+    needs: [run_tests]
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check check_valgrind 
+        run: |
+          cd tests 
+          ./valgrind_run.rb
+
   push_to_mirror:
     needs: [check_program_compilation, run_tests] 
     runs-on: ubuntu-latest
