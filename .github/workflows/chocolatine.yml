@@ -56,7 +56,7 @@ jobs:
           ./valgrind_run.rb
 
   push_to_mirror:
-    needs: [check_program_compilation, run_tests] 
+    needs: [check_valgrind] 
     runs-on: ubuntu-latest
     steps:                                              
       - uses: actions/checkout@v3
